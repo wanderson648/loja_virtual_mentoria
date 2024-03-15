@@ -1,5 +1,6 @@
 package jdev.mentoria.lojavirtual.model;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
