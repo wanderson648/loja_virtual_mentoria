@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -18,4 +19,18 @@ public class PessoaFisica extends Pessoa {
     private String cpf;
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PessoaFisica that = (PessoaFisica) o;
+        return Objects.equals(cpf, that.cpf);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), cpf);
+    }
 }

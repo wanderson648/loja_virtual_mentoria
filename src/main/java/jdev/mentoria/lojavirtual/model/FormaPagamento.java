@@ -7,25 +7,27 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
 @Getter
 @Setter
-@Table(name = "categoria_produto")
-@SequenceGenerator(name = "seq_categoria_produto", sequenceName = "seq_categoria_produto", allocationSize = 1, initialValue = 1)
-public class CategoriaProduto implements Serializable {
+@Entity
+@Table(name = "forma_pagamento")
+@SequenceGenerator(name = "seq_forma_pagamento", sequenceName = "seq_forma_pagamento", allocationSize = 1, initialValue = 1)
+public class FormaPagamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_categoria_produto")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_forma_pagamento")
     private Long id;
-    @Column(name = "nome_desc", nullable = false)
-    private String nomeDescricao;
+
+    private String descricao;
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CategoriaProduto that = (CategoriaProduto) o;
+        FormaPagamento that = (FormaPagamento) o;
         return Objects.equals(id, that.id);
     }
 

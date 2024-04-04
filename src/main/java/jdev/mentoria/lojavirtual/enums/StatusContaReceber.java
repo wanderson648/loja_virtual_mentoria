@@ -3,13 +3,14 @@ package jdev.mentoria.lojavirtual.enums;
 import lombok.Getter;
 
 @Getter
-public enum TipoEndereco {
-    COBRANCA("Cobrança"),
-    ENTREGA("Entrega");
+public enum StatusContaReceber {
+    COBRANCA("Pagar"),
+    VENCIDA("Vencida"),
+    ABERTA("Aberta"),
+    QUITADA("Quitada");
 
     private String descricao;
-
-    TipoEndereco(String descricao) {
+    StatusContaReceber(String descricao) {
         this.descricao = descricao;
     }
 

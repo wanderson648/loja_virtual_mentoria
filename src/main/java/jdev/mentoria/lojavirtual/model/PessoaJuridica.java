@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -22,4 +23,17 @@ public class PessoaJuridica extends Pessoa {
     private String razaoSocial;
     private String categoria;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PessoaJuridica that = (PessoaJuridica) o;
+        return Objects.equals(cnpj, that.cnpj);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), cnpj);
+    }
 }
