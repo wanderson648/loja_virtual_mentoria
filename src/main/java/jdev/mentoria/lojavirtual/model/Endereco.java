@@ -1,6 +1,7 @@
 package jdev.mentoria.lojavirtual.model;
 
 
+import jdev.mentoria.lojavirtual.enums.TipoEndereco;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,4 +33,8 @@ public class Endereco implements Serializable {
     @JoinColumn(name = "pessoa_id", nullable = false,
             foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
     private Pessoa pessoa;
+
+    @Enumerated(EnumType.STRING)
+    private TipoEndereco tipoEndereco;
+
 }
