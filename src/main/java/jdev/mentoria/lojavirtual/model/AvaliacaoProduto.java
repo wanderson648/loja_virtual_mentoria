@@ -1,5 +1,6 @@
 package jdev.mentoria.lojavirtual.model;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,36 +11,34 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@Table(name = "nota_item_produto")
-@SequenceGenerator(name = "seq_nota_item_produto", sequenceName = "seq_nota_item_produto",
+@Table(name = "avaliacao_produto")
+@SequenceGenerator(name = "seq_avaliacao_produto", sequenceName = "seq_avaliacao_produto",
         initialValue = 1, allocationSize = 1)
-public class NotaItemProduto implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class AvaliacaoProduto implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_nota_item_produto")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_avaliacao_produto")
     private Long id;
 
-    @Column(nullable = false)
-    private Double quantidade;
+    private Integer nota;
 
-    @ManyToOne
-    @JoinColumn(name = "nota_fiscal_compra_id", nullable = false,
-            foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "nota_fiscal_compra_fk"))
-    private NotaFiscalCompra notaFiscalCompra;
+    private String descricao;
 
     @ManyToOne
     @JoinColumn(name = "produto_id", nullable = false,
             foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "produto_fk"))
     private Produto produto;
 
+    @ManyToOne(targetEntity = Pessoa.class)
+    @JoinColumn(name = "pessoa_id", nullable = false,
+            foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
+    private Pessoa pessoa;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        NotaItemProduto that = (NotaItemProduto) o;
+        AvaliacaoProduto that = (AvaliacaoProduto) o;
         return Objects.equals(id, that.id);
     }
 
