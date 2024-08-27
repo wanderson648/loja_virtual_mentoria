@@ -13,8 +13,10 @@ import java.util.Objects;
 @Table(name = "acesso")
 @SequenceGenerator(name = "acesso", sequenceName = "seq_acesso", initialValue = 1, allocationSize = 1)
 public class Acesso implements GrantedAuthority {
+
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_acesso")
     private Long id;
+
     @Column(nullable = false)
     private String descricao;
     @Override

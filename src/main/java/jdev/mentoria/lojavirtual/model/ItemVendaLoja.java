@@ -11,7 +11,8 @@ import java.util.Objects;
 @Getter
 @Setter
 @Table(name = "item_venda_loja")
-
+@SequenceGenerator(name = "seq_item_venda_loja", sequenceName = "seq_item_venda_loja",
+        initialValue = 1, allocationSize = 1)
 public class ItemVendaLoja implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -20,6 +21,7 @@ public class ItemVendaLoja implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_item_venda_loja")
     private Long id;
 
+    @Column(nullable = false)
     private Double quantidade;
 
     @ManyToOne
